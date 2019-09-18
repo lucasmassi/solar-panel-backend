@@ -110,6 +110,9 @@ Após dar o ```git clone``` do projeto seguir os passos abaixo:
 <b>Npm</b> - Utilizei o Npm como gerenciador de pacotes
 ```
 npm install
+
+// Para rodar o projeto, utilizei o nodemon para atualizar automático ao identificar uma modificação, pode ser visto no package.json
+npm run dev
 ```
 
 <b>Env</b> - Me baseio nas configs do ```.env``` para conexões no banco e outras coisas. Duplicar o arquivo ```.env.exemple``` com suas informações de banco, abaixo o exemplo do meu ```.env```:
