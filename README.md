@@ -96,4 +96,6 @@ Informações gerais do projeto, rotas e instalação do projeto
 ```
 
 Utilização do <b>Insomnia</b> para testar todas requisições, conforme imagem abaixo:
-
+![Insomnia](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia.PNG)
+![Insomnia2](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia2.PNG)
+![Insomnia3](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia3.PNG)
