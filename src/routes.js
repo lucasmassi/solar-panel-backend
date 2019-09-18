@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import UserController from './app/controllers/UserController';
+import PanelController from './app/controllers/PanelController';
 import SessionController from './app/controllers/SessionController';
 
 import authMiddleware from './app/middlewares/auth';
@@ -17,8 +18,8 @@ routes.use(authMiddleware);
 // Auth
 routes.put('/users', UserController.update);
 
-// routes.get('/appointments', AppointmentController.index);
-// routes.post('/appointments', AppointmentController.store);
-// routes.delete('/appointments/:id', AppointmentController.delete);
+routes.get('/panels', PanelController.index);
+//routes.post('/panels', PanelController.store);
+//routes.delete('/panels/:id', PanelController.delete);
 
 export default routes;
