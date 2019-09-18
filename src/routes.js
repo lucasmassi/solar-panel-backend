@@ -17,7 +17,6 @@ routes.use(authMiddleware);
 
 // Auth
 routes.put('/users', UserController.update);
-
 routes.get('/panels', PanelController.index);
 
 export default routes;
