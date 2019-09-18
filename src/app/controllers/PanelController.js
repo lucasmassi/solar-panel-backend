@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import Panel from '../models/Panel';
 import User from '../models/User';
 

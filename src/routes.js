@@ -19,7 +19,5 @@ routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 
 routes.get('/panels', PanelController.index);
-//routes.post('/panels', PanelController.store);
-//routes.delete('/panels/:id', PanelController.delete);
 
 export default routes;
