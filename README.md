@@ -10,7 +10,7 @@ Informações gerais do projeto, rotas e instalação do projeto
 - Auth: <b>JWT(JsonWebToken)</b>
 - Padronização de código: <b>Eslint</b> e <b>Prettier</b>, padrão AirBnb
 
-#### Rotas e autenticação
+### Rotas e autenticação
 
 <b>POST</b> - ```/users``` - Cadastro do usuário, exemplo abaixo:
 
@@ -99,3 +99,57 @@ Utilização do <b>Insomnia</b> para testar todas requisições, conforme imagem
 ![Insomnia](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia.PNG)
 ![Insomnia2](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia2.PNG)
 ![Insomnia3](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia3.PNG)
+
+## Instalando o projeto
+<b>Docker</b> - Utilizei o docker para subir um banco de dados PostgreSQL, deixarei o comando abaixo para parâmetro de conexão
+```
+docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+```
+Após dar o ```git clone``` do projeto seguir os passos abaixo:
+
+<b>Npm</b> - Utilizei o Npm como gerenciador de pacotes
+```
+npm install
+```
+
+<b>Env</b> - Me baseio nas configs do ```.env``` para conexões no banco e outras coisas. Duplicar o arquivo ```.env.exemple``` com suas informações de banco, abaixo o exemplo do meu ```.env```:
+```
+APP_URL=http://localhost:3333
+NODE_ENV=development
+
+#Auth
+
+APP_SECRET=22a24f9666637f75297f50c75affc907
+
+# Database
+
+DB_HOST=localhost
+DB_USER=postgres
+DB_PASS=docker
+DB_NAME=orbita
+```
+
+<b>Secret</b> - Para a autenticação JWT eu utilizo uma palavra secreta para gerar um MD5, que será o meu ```APP_SECRET```, no exemplo acima eu deixei o meu Secret caso precisarem utilizar é muito simples, entrar em um site de gerador de MD5 e colocar uma palavra aleatória ou um conjunto de palavras, pegar o código ```MD5``` gerado e colocar na variável de ambiente ```APP_SECRET```. 
+> Obs: esta chave é apenas utilizada como uma segunda forma de segurança na geração do ```Token``` principal, que será gerado pela lib ```jsonwebtoken```.
+
+<b>Migrations</b> - Como eu utilizo migrations para gerar minhas tabelas e seeds no banco, pode ser executado alguns comandos com o ```sequelize-cli``` instalado no projeto. 
+> Importante ressaltar a não exclusão do arquivo ```.sequelizerc``` no projeto pois é com ele que faço os apontamentos para as pastas corretas de migrations, seeds, config e models do projeto
+
+Abaixo os comandos para gerar as tabelas no banco já conectado com o ```docker start``` no container do postgres utilizado:
+```
+// Para gerar a migration
+npx sequelize-cli db:migrate
+
+// Para derrubar a migration
+npx sequelize-cli db:migrate:undo
+
+// Para gerar as seeds
+npx sequelize-cli db:seed:all
+
+```
+Para mais informações consultar a documentação do [PostgreSQL](https://sequelize.org/master/manual/migrations.html)
+
+Acredito que seja o suficiente para rodarem a aplicação, vou deixar um link onde listo algumas libs que costumo utilizar nos projetos:
+[Bibliotecas que funcionam muito bem em NodeJs](https://github.com/lucasmassi/help-node-summary)
+
+Qualquer dúvida estou a disposição para explicar minha estruturação, mas acredito que seja bem fácil de entender.
