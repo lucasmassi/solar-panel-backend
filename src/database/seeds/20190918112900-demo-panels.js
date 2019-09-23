@@ -1,3 +1,8 @@
+<<<<<<< 112a1ec4c8c606e386fd5e1f34c77b833de151c9
+=======
+const data = require('../sqls/data.json');
+
+>>>>>>> Reduce data file
 module.exports = {
   up: queryInterface => {
     return queryInterface.bulkInsert(
