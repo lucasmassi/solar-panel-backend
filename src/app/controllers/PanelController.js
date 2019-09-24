@@ -21,6 +21,36 @@ class PanelController {
 
     return res.json(panels);
   }
+
+  async sumTotal(req, res) {
+    const { state } = await User.findByPk(req.userId);
+
+    const panelsSum = await Panel.sum('system_size', { where: { state } }).then(
+      sum => {
+        return sum;
+      }
+    );
+
+    return res.json(panelsSum);
+  }
+
+  async maxCost(req, res) {
+    const { state } = await User.findByPk(req.userId);
+
+    const maxCost = await Panel.max('cost', {
+      where: { state },
+    });
+
+    const { zip_code } = await Panel.findOne({
+      where: { state, cost: maxCost },
+      attributes: ['zip_code'],
+    });
+
+    return res.json({
+      maxCost,
+      zip_code,
+    });
+  }
 }
 
 export default new PanelController();
