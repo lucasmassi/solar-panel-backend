@@ -20,5 +20,7 @@ routes.put('/users', UserController.update);
 routes.get('/panels', PanelController.index);
 routes.get('/panels/totalInstallation/:userId', PanelController.sumTotal);
 routes.get('/panels/maxCost/:userId', PanelController.maxCost);
+routes.get('/panels/largerMonths/:userId', PanelController.largerMonths);
+routes.get('/panels/graphic/:userId', PanelController.graphic);
 
 export default routes;

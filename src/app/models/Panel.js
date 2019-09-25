@@ -1,6 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
 import { format } from 'date-fns';
 import en from 'date-fns/locale/en-US';
+import pt from 'date-fns/locale/pt';
 
 class Panel extends Model {
   static init(sequelize) {
@@ -17,9 +18,27 @@ class Panel extends Model {
           get() {
             return format(
               this.installation_date,
-              "'Day' dd 'of' MMM', 'yyyy'",
+              "'Dia' dd 'de' MMM', 'yyyy'",
               { locale: en }
             );
+          },
+        },
+        year_installation: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return format(this.installation_date, 'yyyy', { locale: en });
+          },
+        },
+        month_installation: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return format(this.installation_date, 'MM', { locale: en });
+          },
+        },
+        month_full: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return format(this.installation_date, 'MMMM', { locale: pt });
           },
         },
       },
