@@ -95,10 +95,15 @@ Informações gerais do projeto, rotas e instalação do projeto
 ]
 ```
 
-Utilização do <b>Insomnia</b> para testar todas requisições, conforme imagem abaixo:
-![Insomnia](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia.PNG)
-![Insomnia2](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia2.PNG)
-![Insomnia3](https://github.com/lucasmassi/orbita-backend/blob/master/assets/images/insomnia3.PNG)
+<b>GET</b> - ```/panels/graphic/:userId``` - Listagem das somas de instalações por ano para exibir no gráfico.
+
+<b>GET</b> - ```/panels/largerMonths/:userId``` - Listagem das 3 maiores instalações no ano.
+
+<b>GET</b> - ```/panels/maxCost/:userId``` - Exibição da instalação com maior custo e o cep.
+
+<b>GET</b> - ```/panels/totalInstallation/:userId``` - Exibição do total de instalações do estado do usuário.
+
+Utilização do <b>Insomnia</b> para testar todas requisições.
 
 ## Instalando o projeto
 <b>Docker</b> - Utilizei o docker para subir um banco de dados PostgreSQL, deixarei o comando abaixo para parâmetro de conexão
@@ -138,6 +143,8 @@ DB_NAME=orbita
 <b>Migrations</b> - Como eu utilizo migrations para gerar minhas tabelas e seeds no banco, pode ser executado alguns comandos com o ```sequelize-cli``` instalado no projeto. 
 > Importante ressaltar a não exclusão do arquivo ```.sequelizerc``` no projeto pois é com ele que faço os apontamentos para as pastas corretas de migrations, seeds, config e models do projeto
 
+Antes de executar as migrations, baixar [ESTE ARQUIVO](https://drive.google.com/file/d/16d8l0Lk9_2wiax8KQndy9IYZHFc-BGDk/view?usp=sharing) e colar no diretório ```src > database > sqls >```, arquivo muito grande para dar um commit.
+
 Abaixo os comandos para gerar as tabelas no banco já conectado com o ```docker start``` no container do postgres utilizado:
 ```
 // Para gerar a migration
@@ -151,6 +158,9 @@ npx sequelize-cli db:seed:all
 
 ```
 Para mais informações consultar a documentação do [PostgreSQL](https://sequelize.org/master/manual/migrations.html)
+
+### Testes
+Implementei alguns testes apenas, e ele utiliza as variáveis de ambientes do arquivo  ```.env.test``` com o ```Jest```, comando para rodar é o ```$ npm run test```.
 
 Acredito que seja o suficiente para rodarem a aplicação, vou deixar um link onde listo algumas libs que costumo utilizar nos projetos:
 [Bibliotecas que funcionam muito bem em NodeJs](https://github.com/lucasmassi/help-node-summary)
