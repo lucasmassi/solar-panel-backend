@@ -1,4 +1,4 @@
-# Challenge Orbita
+# Solar Panel Backend
 Informações gerais do projeto, rotas e instalação do projeto
 
 ## Descrição das ferramentas e tecnologias utilizadas no projeto
